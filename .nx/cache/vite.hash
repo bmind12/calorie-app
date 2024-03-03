@@ -1,0 +1,63 @@
+{
+  "13981711283935006729": {
+    "build": {
+      "command": "vite build",
+      "options": {
+        "cwd": "apps/web"
+      },
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production",
+        {
+          "externalDependencies": [
+            "vite"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/dist/apps/web"
+      ]
+    },
+    "serve": {
+      "command": "vite serve",
+      "options": {
+        "cwd": "apps/web"
+      }
+    },
+    "preview": {
+      "command": "vite preview",
+      "options": {
+        "cwd": "apps/web"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "build"
+      }
+    },
+    "test": {
+      "command": "vitest run",
+      "options": {
+        "cwd": "apps/web"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "vitest"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/coverage/apps/web"
+      ]
+    }
+  }
+}
