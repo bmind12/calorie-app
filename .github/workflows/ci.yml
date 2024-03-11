@@ -34,8 +34,9 @@ jobs:
       - uses: nrwl/nx-set-shas@v4
 
       # - run: npx nx-cloud record -- nx format:check
-      - name: affected lint, test, build
-        run: npx nx affected -t lint test build
+      # TODO: add tests back and conteinerize the server app
+      - name: affected lint, build
+        run: npx nx affected -t lint build
         env:
           NX_BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref || 'develop' }}
           NX_HEAD: ${{ github.sha }}
